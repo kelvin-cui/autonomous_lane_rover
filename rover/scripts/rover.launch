@@ -1,0 +1,6 @@
+<launch>    
+    <node pkg="rover" name="motor" type="motor.py" />
+    <node pkg="rover" name="camera" type="camera.py" output="screen"/>
+    <node pkg="web_video_server" name="web_video_server" type="web_video_server" />
+    <include file="$(find usb_cam)/launch/usb_cam-test.launch"/>
+</launch>
