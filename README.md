@@ -9,26 +9,6 @@ The lane-following rover was designed to follow a lane marked by duct tape, as a
 
 <img src="https://i.ibb.co/qpDWSh9/151649569-354136375634744-1835493396324256374-n.jpg" alt="rover" border="0">
 
-## mechanical/electrical design:
-The mechanical design of the rover went through multiple iterations of refinement. V1 was designed with DC motors in mind, but even with a gearbox, there was not fine enough control to accurately position the rover on the relatively small table surface.
-
-<img src="https://i.ibb.co/JrBX14D/roverv1.png" alt="roverv1" border="0">
-
-As a result, V2 used stepper motors, as well as a stand-alone Arduino Nano that communicated with the Raspberry Pi over serial to control the motors. However, this design used the default V1.3 Pi Camera, which had a minimum focus distance of 0.5m - too far for our use. Furthermore, the position of the drive motors at the rear increased the torque required to turn the robot, causing in slippage of the tires.
-
-<img src="https://i.ibb.co/7Nvj1Sv/roverv2.png" alt="roverv2" border="0">
-
-The final design came with moving the differential drive tires to the middle, as well as moving the camera module to the top of the robot to get as clear of an image as possible. The camera was swapped for the wide angle module, and the microprocessors were moved to the top as they required the most interaction. This redesign also allowed the entire rover to be much more compact, utilizing the space given as effectively as possible. 
-
-<img src="https://i.ibb.co/DbRTMgt/roverv3.png" alt="roverv3" border="0">
-
-
-The layered design was heavily inspired by racing quadcopters, where carbon fiber plates would be layered on top of one another using standoffs. All parts were designed in Solidworks, and 3D printed using PETG.
-
-
-The Arduino connects to two ULN2003 stepper driver modules, which are then connected to 28BYJ-48 Stepper Motors. The Raspberry Pi 4 is powered by an external 10000mAh battery bank capable of delivering 3A at 5V. The Arduino Nano is powered over the USB connection with the Raspberry Pi, while the stepper drivers have a separate 5V connection to the battery bank.
-
-
 ## software design:
 
 ### lane detection:
@@ -49,3 +29,21 @@ The different modules communicate using the ROS framework. The original camera i
 I made use of two external ros packages - the usb_cam test package in order to quickly publish images from the Pi Camera, and the web_video_server package to visualize the images for debugging.
 
 The camera node requires the most computational time - as a result, it was optimized to have a maximum runtime of 0.06 seconds on the Pi4, allowing for a global rate of 10hz. 
+
+
+## mechanical/electrical design:
+The mechanical design of the rover went through multiple iterations of refinement. V1 was designed with DC motors in mind, but even with a gearbox, there was not fine enough control to accurately position the rover on the relatively small table surface.
+
+<img src="https://i.ibb.co/JrBX14D/roverv1.png" alt="roverv1" border="0">
+
+As a result, V2 used stepper motors, as well as a stand-alone Arduino Nano that communicated with the Raspberry Pi over serial to control the motors. However, this design used the default V1.3 Pi Camera, which had a minimum focus distance of 0.5m - too far for our use. Furthermore, the position of the drive motors at the rear increased the torque required to turn the robot, causing in slippage of the tires.
+
+<img src="https://i.ibb.co/7Nvj1Sv/roverv2.png" alt="roverv2" border="0">
+
+The final design came with moving the differential drive tires to the middle, as well as moving the camera module to the top of the robot to get as clear of an image as possible. The camera was swapped for the wide angle module, and the microprocessors were moved to the top as they required the most interaction. This redesign also allowed the entire rover to be much more compact, utilizing the space given as effectively as possible. 
+
+<img src="https://i.ibb.co/DbRTMgt/roverv3.png" alt="roverv3" border="0">
+
+The Arduino connects to two ULN2003 stepper driver modules, which are then connected to 28BYJ-48 Stepper Motors. The Raspberry Pi 4 is powered by an external 10000mAh battery bank capable of delivering 3A at 5V. The Arduino Nano is powered over the USB connection with the Raspberry Pi, while the stepper drivers have a separate 5V connection to the battery bank.
+
+The layered design was heavily inspired by racing quadcopters, where carbon fiber plates would be layered on top of one another using standoffs. All parts were designed in Solidworks, and 3D printed using PETG.
