@@ -1,4 +1,4 @@
-# autonomous_lane_rover
+# autonomous lane following rover
 <img src="https://i.ibb.co/nCW67Xm/152375054-496836404648972-4190929028758680099-n.jpg" alt="152375054-496836404648972-4190929028758680099-n" border="0">
 
 Autonomous lane-following rover using openCV to identify and predict lane positions, and KP feedback loop for movement control, and ROS as a robotics framework to combine different modules together. The image processing was done on a Raspberry Pi 4B, which sends the appropriate motor commands to an Arduino Nano, which then sends the commands to stepper motors controlling a differential drive.
